@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 require('dotenv').config()
+let bodyParser = require('body-parser');
 
 console.log("Hello World");
 
@@ -18,6 +19,8 @@ app.get("/", function (req, res) {
 });
 
 app.use("/public", express.static(__dirname + "/public"));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /* app.get("/json", function (req, res) {
     res.json({ "message": "Hello json" });
